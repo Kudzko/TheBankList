@@ -29,26 +29,19 @@
 
         <div class="div4">
             <form action="search" method="post">
-                richest user:
-                <output name="richest_user">no result yet (push the
-                    button)</output>
-                <output name="richest_user">${richest_user.name}
-                    ${richest_user.surName}</output>
-
+                richest user:${richest_user.name} ${richest_user.surName}
                 <div>
                     <button type="submit" name="command"
                             value="get_richest_user">get richest user
                     </button>
                 </div>
 
-
-
-                richest user:
-                <output name="sum_of_all_accounts">no result yet (push the
+                Sum of all accounts: <output name="sum_of_all_accounts">${sum_all_accounts} no
+                result yet (push the
                     button)</output>
                 <div>
                     <button type="submit" name="command"
-                            value="get_sum_of_all_accounts">get sum of all the
+                            value="get_sum_all_accounts">get sum of all the
                         accounts
                     </button>
                 </div>

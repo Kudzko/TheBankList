@@ -9,14 +9,15 @@ import by.devincubator.firstTask.model.dao.daoimplimintation.UserDAO;
 import java.sql.Connection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
-public class UserOperationsService extends AbstractService{
+public class UserOperationsService extends AbstractService {
 
     public User findRichestUser() {
         User richestUser = null;
         Connection connection = connectionPool.getConnection();
         Account account = findMaxAccount(connection);
-        richestUser = getUserById(connection,account.getUserId() );
+        richestUser = getUserById(connection, account.getUserId());
         return richestUser;
     }
 
@@ -37,8 +38,9 @@ public class UserOperationsService extends AbstractService{
             maxAccount = Collections.max(accountDAO.getAll(), comparator);
         } catch (DAOException e) {
             e.printStackTrace();
-        }finally {
-            accountDAO.releaseConnectionFromDAO();
+        } finally {
+            connectionPool.returnConnection(accountDAO
+                    .releaseConnectionFromDAO());
         }
         return maxAccount;
     }
@@ -53,10 +55,35 @@ public class UserOperationsService extends AbstractService{
         } catch (DAOException e) {
             e.printStackTrace();
         } finally {
-            userDAO.releaseConnectionFromDAO();
+            connectionPool.returnConnection(userDAO.releaseConnectionFromDAO());
         }
         return user;
     }
 
+
+    public Integer getSumAllAccounts() {
+        Connection connection = connectionPool.getConnection();
+        Integer sum = 0;
+        AccountDAO accountDAO = null;
+        try {
+            accountDAO = (AccountDAO) factoryDAO.getDAO(AccountDAO.class);
+            accountDAO.setConnection(connection);
+            sum = countSum(accountDAO.getAll());
+        } catch (DAOException e) {
+            e.printStackTrace();
+        } finally {
+            connectionPool.returnConnection(accountDAO
+                    .releaseConnectionFromDAO());
+        }
+        return sum;
+    }
+
+    private Integer countSum(List<Account> accounts) {
+        Integer sum = 0;
+        for (Account account : accounts) {
+            sum += account.getAccount();
+        }
+        return sum;
+    }
 
 }

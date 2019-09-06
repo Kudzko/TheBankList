@@ -7,6 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 public class DefaultCommand implements Command {
     public static final String DEFAULT_PAGE = "/view/default_page.jsp";
     public String execute(HttpServletRequest request) {
-        return null;
+        return DEFAULT_PAGE;
     }
 }

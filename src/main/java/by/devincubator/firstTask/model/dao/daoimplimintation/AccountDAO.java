@@ -17,7 +17,7 @@ public class AccountDAO extends AbstractDAO<Account, Integer> {
     public static final String DELETE_ACCOUNT =
             "DELETE FROM `thebanklist`.`account` WHERE `idaccount`=?;";
     public static final String SELECT =
-            "SELECT `id`, `account`, `userid` FROM thebanklist.account ";
+            "SELECT `idaccount`, `account`, `userid` FROM thebanklist.account ";
     public static final String FIND_ACCOUNT_BY_ID =
             SELECT + "WHERE `idaccount` = ?;";
     public static final String SELECT_ACCOUNTS =

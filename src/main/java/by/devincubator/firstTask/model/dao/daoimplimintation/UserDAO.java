@@ -16,7 +16,7 @@ public class UserDAO extends AbstractDAO<User, Integer> {
     public static final String DELETE_USER =
             "DELETE FROM `thebanklist`.`user` WHERE `iduser`=?;";
     public static final String SELECT =
-            "SELECT `id`, `name`, `surname` FROM thebanklist.user ";
+            "SELECT `iduser`, `name`, `surname` FROM thebanklist.user ";
     public static final String FIND_USER_BY_ID =
             SELECT + "WHERE `iduser` = ?;";
     public static final String SELECT_USERS =
