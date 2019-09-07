@@ -78,7 +78,7 @@ public class UserOperationsService extends AbstractService {
         return sum;
     }
 
-    private Integer countSum(List<Account> accounts) {
+    public Integer countSum(List<Account> accounts) {
         Integer sum = 0;
         for (Account account : accounts) {
             sum += account.getAccount();
