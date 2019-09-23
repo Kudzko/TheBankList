@@ -3,18 +3,19 @@ App shows richest user in data base and  the sum of all the accounts in the
 bank by pushing on appropriate button.
 
 DB consists of two tables:
-user
+
+user <br/>
 -----
-userid INT
-name VARCHAR(45)
-surname VARCHAR(45)
+userid INT <br/>
+name VARCHAR(45) <br/>
+surname VARCHAR(45) <br/>
 
 
-account
+account <br/>
 --------
-accountId INT
-account INT
-userid INT
+accountId INT <br/>
+account INT <br/> 
+userid INT <br/>
 
 Work with DB based on DAO and JDBC.
 View developed on jsp.
